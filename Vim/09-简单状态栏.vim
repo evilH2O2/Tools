@@ -33,7 +33,7 @@ let logo = ["\u2721", "\u2618", "\u2622", "\u273F", "\u2724"]
 
 
 set nu
-
+set laststatus=2
 " 左
 set statusline=
 set statusline+=%#buf#\❖\ \B-%n\ \%*
