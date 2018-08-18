@@ -74,7 +74,7 @@ hi IncSearch       ctermfg=none    ctermbg=none    cterm=none "'incsearch' 高�
 hi StatusLine      ctermfg=none    ctermbg=none    cterm=none "当前窗口的状态行
 hi StatusLineNC    ctermfg=none    ctermbg=none    cterm=none "非当前窗口的状态行,如果等于 "StatusLine"，Vim 会使用 "^^^" 指示当前
                                                                "窗口的状态行
-hi WildMenu        ctermfg=none    ctermbg=none    cterm=none "
+hi WildMenu        ctermfg=none    ctermbg=none    cterm=none "补全的当前匹配
 hi Question        ctermfg=none    ctermbg=none    cterm=none "提示和 yes/no 问题
 hi Title           ctermfg=none    ctermbg=none    cterm=none " ":set all"、":autocmd" 等输出的标题
 hi ModeMsg         ctermfg=none    ctermbg=none    cterm=none "'showmode' 消息 (例如，"-- INSERT --")
