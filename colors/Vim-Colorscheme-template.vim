@@ -13,12 +13,13 @@ set background=dark
 set background=light
 " --------------------------------
 
-highlight clear
+hi clear
 
 if exists("syntax_on")
     syntax reset
 endif
 
+set t_Co=256 " 开启256色支持
 let g:colors_name="template"
 
 
@@ -37,14 +38,15 @@ let g:colors_name="template"
 " --------------------------------
 hi Normal          ctermfg=none    ctermbg=none    cterm=none "普通文本
 hi Cursor          ctermfg=none    ctermbg=none    cterm=none "光标所在的字符
-hi CursorLine      ctermfg=none    ctermbg=none    cterm=none "置位 'cursorline' 时，光标所在的屏幕行
-hi LineNr          ctermfg=none    ctermbg=none    cterm=none " ":number"和":#" 命令与置位'number'或'relativenumber' 选项时的行号
-hi CursorLineNR    ctermfg=none    ctermbg=none    cterm=none "和 LineNr 类似，置位 'cursorline' 或 'relativenumber' 时用于光标行
-                                                              
+hi CursorLine      ctermfg=none    ctermbg=none    cterm=none "当前所在行
+hi LineNr          ctermfg=none    ctermbg=none    cterm=none " 行号,前景：行号数字颜色，背景：行号背景
+hi CursorLineNR    ctermfg=none    ctermbg=none    cterm=none "所在行对应的行号，前景：所在行对应行号的前景色,背景：所在行对应行号的背景色
+
 " -----------------
 " 数字列,带有行号和折叠的列
 " -----------------
-hi CursorColumn    ctermfg=none    ctermbg=none    cterm=none "置位 'cursorcolumn' 时，光标所在的屏幕列
+hi CursorColumn    ctermfg=none    ctermbg=none    cterm=none "光标所在的屏幕列
+hi ColorColumn     ctermfg=none    ctermbg=none    cterm=none "所在列的颜色
 hi FoldColumn      ctermfg=none    ctermbg=none    cterm=none "指示折叠的打开和关闭
 hi SignColumn      ctermfg=none    ctermbg=none    cterm=none "显示  signs  的列
 hi Folded          ctermfg=none    ctermbg=none    cterm=none "用于关闭的折叠的行
@@ -55,7 +57,6 @@ hi Folded          ctermfg=none    ctermbg=none    cterm=none "用于关闭的�
 " 处理窗口分隔线的外观
 
 hi VertSplit       ctermfg=none    ctermbg=none    cterm=none "分离垂直分割窗口的列
-hi ColorColumn     ctermfg=none    ctermbg=none    cterm=none "用于 'colorcolumn' 设置的列
 hi TabLine         ctermfg=none    ctermbg=none    cterm=none "标签页行，非活动标签页标签
 hi TabLineFill     ctermfg=none    ctermbg=none    cterm=none "标签页行，没有标签的地方
 hi TabLineSel      ctermfg=none    ctermbg=none    cterm=none "标签页行，活动标签页标签
@@ -72,26 +73,24 @@ hi IncSearch       ctermfg=none    ctermbg=none    cterm=none "'incsearch' 高�
 "  提示/状态 
 " -----------------
 hi StatusLine      ctermfg=none    ctermbg=none    cterm=none "当前窗口的状态行
-hi StatusLineNC    ctermfg=none    ctermbg=none    cterm=none "非当前窗口的状态行,如果等于 "StatusLine"，Vim 会使用 "^^^" 指示当前
-                                                               "窗口的状态行
-hi WildMenu        ctermfg=none    ctermbg=none    cterm=none "补全的当前匹配
-hi Question        ctermfg=none    ctermbg=none    cterm=none "提示和 yes/no 问题
-hi Title           ctermfg=none    ctermbg=none    cterm=none " ":set all"、":autocmd" 等输出的标题
+hi StatusLineNC    ctermfg=none    ctermbg=none    cterm=none "非当前窗口的状态行
+hi WildMenu        ctermfg=none    ctermbg=none    cterm=none "EX命令补全时状态栏出现的那个列表
+hi Question        ctermfg=none    ctermbg=none    cterm=none "询问对话框（yes/no）对话框的颜色，例，:s/?/?/gc 替换时的对话框
+hi Title           ctermfg=none    ctermbg=none    cterm=none " ":set all"、":autocmd" 等输出的标题,html中的标题<title> 
 hi ModeMsg         ctermfg=none    ctermbg=none    cterm=none "'showmode' 消息 (例如，"-- INSERT --")
-hi MoreMsg         ctermfg=none    ctermbg=none    cterm=none "more-prompt 
+hi MoreMsg         ctermfg=none    ctermbg=none    cterm=none "more-prompt ,:message  --更多---
 " --------------
 "  视觉辅助,匹配括号，视觉块选择等等
 " --------------
 hi MatchParen      ctermfg=none    ctermbg=none    cterm=none ”如果光标所在或刚刚在它之前的字符是配对的括号一部分的话，它和它的配对
 hi Visual          ctermfg=none    ctermbg=none    cterm=none "可视模式的选择区
 hi VisualNOS       ctermfg=none    ctermbg=none    cterm=none "Vim 是 "选择区的非拥有者" 时，可视模式的选择区
-hi NonText         ctermfg=none    ctermbg=none    cterm=none "窗口尾部的 '@'，'showbreak' 的字符和其它在文本里实际不存在的字
-                                                              "符 (例如，代替行尾放不下的双宽字符而显示的 ">")
+hi NonText         ctermfg=none    ctermbg=none    cterm=none "最下面未占用行时的那个小波浪 ～符号或@
 
 hi Todo            ctermfg=none    ctermbg=none    cterm=none "需要特殊注意的部分；主要是关键字 TODO FIXME 和 XXX
 hi Underlined      ctermfg=none    ctermbg=none    cterm=none "需要突出的文本，HTML 链接
 hi Error           ctermfg=none    ctermbg=none    cterm=none "有错的构造
-hi ErrorMsg        ctermfg=none    ctermbg=none    cterm=none "错误信息,Error
+hi ErrorMsg        ctermfg=none    ctermbg=none    cterm=none "EX命令使用错误的提示
 hi WarningMsg      ctermfg=none    ctermbg=none    cterm=none "警告信息,warning
 hi Ignore          ctermfg=none    ctermbg=none    cterm=none " 
 hi SpecialKey      ctermfg=none    ctermbg=none    cterm=none " ":map" 列出的 Meta 和特殊键，也包括文本里不可显示字符的显示                                                                        "和'listchars'.一般的: 和实际内容显示上有差异的文本
@@ -106,7 +105,7 @@ hi Number          ctermfg=none    ctermbg=none    cterm=none "数字
 hi Boolean         ctermfg=none    ctermbg=none    cterm=none "布尔值
 hi Float           ctermfg=none    ctermbg=none    cterm=none "浮点值
 
-hi Identifier      ctermfg=none    ctermbg=none    cterm=none "任何变量名
+hi Identifier      ctermfg=none    ctermbg=none    cterm=none "变量/参数
 hi Function        ctermfg=none    ctermbg=none    cterm=none "函数名 (也包括: 类的方法名)
 " --------------------------------
 " 语言结构，条件，循环，关键词，注释等等
@@ -116,11 +115,11 @@ hi Conditional     ctermfg=none    ctermbg=none    cterm=none "条件语句,if�
 hi Repeat          ctermfg=none    ctermbg=none    cterm=none "循环语句,for、do、while 等
 hi Label           ctermfg=none    ctermbg=none    cterm=none "case、default 等
 hi Operator        ctermfg=none    ctermbg=none    cterm=none ""sizeof"、"+"、"*" 等
-hi Keyword         ctermfg=none    ctermbg=none    cterm=none " 关键词
+hi Keyword         ctermfg=none    ctermbg=none    cterm=none " 关键词，"JS关键字，document/alert()/window等等
 hi Exception       ctermfg=none    ctermbg=none    cterm=none "try、catch、throw等
 hi Comment         ctermfg=none    ctermbg=none    cterm=none "任何注释
 
-hi Special         ctermfg=none    ctermbg=none    cterm=none "任何特殊符号
+hi Special         ctermfg=none    ctermbg=none    cterm=none "任何特殊符号，\r \n 
 hi SpecialChar     ctermfg=none    ctermbg=none    cterm=none "常数中的特殊字符
 hi Tag             ctermfg=none    ctermbg=none    cterm=none "可以使用 CTRL-] 的项目
 hi Delimiter       ctermfg=none    ctermbg=none    cterm=none "需要注意的字符
@@ -143,7 +142,7 @@ hi Typedef         ctermfg=none    ctermbg=none    cterm=none "typedef 定义
 
 
 " --------------------------------
-" Diff，vim diff的颜色，块相等，块不同，块不存在等等
+" vim文件对比，vim diff的颜色，块相等，块不同，块不存在等等
 " --------------------------------
 hi DiffAdd         ctermfg=none    ctermbg=none    cterm=none "比较模式: 增加的行
 hi DiffChange      ctermfg=none    ctermbg=none    cterm=none "比较模式: 改变的行
@@ -151,7 +150,7 @@ hi DiffDelete      ctermfg=none    ctermbg=none    cterm=none "比较模式: 删
 hi DiffText        ctermfg=none    ctermbg=none    cterm=none "比较模式: 改变行里的改动文本
 
 " --------------------------------
-" 完成菜单，插入模式完成菜单，背景，滚动条，所选项目，未选择项目。
+" 自动完成菜单，就是自动补全的那个列表
 " --------------------------------
 hi Pmenu           ctermfg=none    ctermbg=none    cterm=none "弹出菜单：正常项目
 hi PmenuSel        ctermfg=none    ctermbg=none    cterm=none "弹出菜单：所选项目
@@ -162,8 +161,10 @@ hi PmenuThumb      ctermfg=none    ctermbg=none    cterm=none "弹出菜单：�
 " --------------------------------
 " 拼写检查，如果您使用Vim进行拼写检查，则非常有用。
 " --------------------------------
-hi SpellBad        ctermfg=none    ctermbg=none    cterm=none "拼写检查器不能识别的单词
-hi SpellCap        ctermfg=none    ctermbg=none    cterm=none "应该大写字母开头的单词
-hi SpellLocal      ctermfg=none    ctermbg=none    cterm=none "拼写检查器能识别但只在其它区域使用的单词
-hi SpellRare       ctermfg=none    ctermbg=none    cterm=none "拼写检查器能识别但很少使用的单词
+" set spell 开启拼写检查
+
+hi SpellBad        ctermfg=none    ctermbg=none    cterm=none "坏词
+hi SpellCap        ctermfg=none    ctermbg=none    cterm=none "开头没有大写的词
+hi SpellLocal      ctermfg=none    ctermbg=none    cterm=none "偏僻词
+hi SpellRare       ctermfg=none    ctermbg=none    cterm=none "不符合所选区域的拼写方式
 
