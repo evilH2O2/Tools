@@ -168,3 +168,4 @@ hi SpellCap        ctermfg=none    ctermbg=none    cterm=none "开头没有大�
 hi SpellLocal      ctermfg=none    ctermbg=none    cterm=none "偏僻词
 hi SpellRare       ctermfg=none    ctermbg=none    cterm=none "不符合所选区域的拼写方式
 
+
