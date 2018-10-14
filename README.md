@@ -1,1 +1,1 @@
-# Vim color/Plugin
+# Vim color
