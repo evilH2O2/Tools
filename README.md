@@ -1,1 +1,1 @@
-# Vim 主题
+# Vim theme
